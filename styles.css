@@ -1,0 +1,58 @@
+.header2 {
+  text-align: center;
+}
+.container {
+  text-align: center;
+}
+/* Styling for the table container */
+#book_table {
+  margin: 20px auto;
+  width: 80%;
+  border-collapse: collapse; /* Prevents double borders */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds subtle depth */
+  border-radius: 8px;
+  overflow: hidden; /* Ensures corners stay rounded */
+}
+
+#book_table th {
+  background-color: #f8f9fa;
+  color: #333;
+  font-weight: 600;
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 2px solid #ececec;
+}
+
+#book_table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #555;
+  vertical-align: middle;
+}
+
+#book_table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+#book_table tbody tr:hover {
+  background-color: #f1f1f1;
+  transition: background-color 0.2s ease;
+}
+
+#toast {
+  min-width: 250px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  right: 30px;
+  top: 30px;
+  font-size: 17px;
+  transition:
+    opacity 0.5s,
+    top 0.5s;
+}
