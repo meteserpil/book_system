@@ -99,3 +99,49 @@ function addBook(event) {
 
 button.addEventListener("click", addBook);
 renderTable();
+// script.js dosyasındaki ilgili kısımları şu şekilde güncelle:
+
+const searchInput = document.getElementById("searchInput"); // Arama kutusunu seç
+
+// renderTable fonksiyonuna parametre ekleyelim (varsayılan olarak ana books dizisini kullansın)
+function renderTable(dataToRender = books) {
+  tableBody.innerHTML = "";
+
+  dataToRender.forEach((book, index) => {
+    const newRow = document.createElement("tr");
+
+    // Data Hücrelerini Oluştur
+    [book.title, book.author, book.isbn].forEach((text) => {
+      const cell = document.createElement("td");
+      cell.textContent = text;
+      newRow.appendChild(cell);
+    });
+
+    // Silme Butonu
+    const deleteCell = document.createElement("td");
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "X";
+    deleteBtn.className = "deleteBtn";
+
+    deleteBtn.addEventListener("click", function () {
+      deleteBook(index);
+    });
+
+    deleteCell.appendChild(deleteBtn);
+    newRow.appendChild(deleteCell);
+    tableBody.appendChild(newRow);
+  });
+}
+
+// Arama Mantığı (Event Listener)
+searchInput.addEventListener("input", function (e) {
+  const searchTerm = e.target.value.toLowerCase(); // Küçük harfe çevir
+
+  // Kitap adına göre filtrele
+  const filteredBooks = books.filter((book) =>
+    book.title.toLowerCase().includes(searchTerm),
+  );
+
+  // Sadece filtrelenmiş kitapları tabloya çizdir
+  renderTable(filteredBooks);
+});
